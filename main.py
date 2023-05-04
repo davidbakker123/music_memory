@@ -10,15 +10,15 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == 'beatles':
             song_folder = os.path.join(__songs_folder__, 'beatles')
-        else:
-            song_folder = __songs_folder__
-    else:
-        song_folder = __songs_folder__
-        
+        elif sys.argv[1] == 'k3':
+            song_folder = os.path.join(__songs_folder__, 'k3')
+    else: 
+        song_folder = os.path.join(__songs_folder__, 'default')
+
+
     ## Initialize and shuffle the deck of cards
     deck = Deck(song_folder)   
     deck.shuffle()
-
 
     ## Initialize pygame stuff
     pygame.init()

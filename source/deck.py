@@ -23,8 +23,7 @@ class Deck:
         song_names = song_names[:NUMBER_OF_SONGS]
 
         self.r = 100
-        self.songs = [Song(song_name) for song_name in song_names] * 2
-        #self.songs = [Song('true_faith.mp3')] * NUMBER_OF_CARDS
+        self.songs = [Song(song_name, song_folder) for song_name in song_names] * 2
 
         n = int(np.sqrt(NUMBER_OF_CARDS))         
         d = 10

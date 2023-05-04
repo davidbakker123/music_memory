@@ -5,12 +5,13 @@ from . import __assets_folder__
 
 class Song:
 
-    def __init__(self, filename):
+    def __init__(self, filename, song_folder):
         self.filename = filename
+        self.song_folder = song_folder
 
     def play(self): 
         try:
-            pygame.mixer.music.load(os.path.join(__assets_folder__, 'songs', self.filename))
+            pygame.mixer.music.load(os.path.join(self.song_folder, self.filename))
             pygame.mixer.music.play()
         except:
             print('failed to play song')

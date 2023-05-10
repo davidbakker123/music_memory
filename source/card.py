@@ -55,6 +55,10 @@ class Card:
     @property
     def position(self):
         return self._pos
+    
+    @position.setter 
+    def position(self, pos):
+        self._pos = pos
 
     @property
     def color(self):

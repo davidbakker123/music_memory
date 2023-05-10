@@ -17,8 +17,10 @@ if __name__ == '__main__':
 
 
     ## Initialize and shuffle the deck of cards
-    deck = Deck(song_folder)   
-    deck.shuffle()
+    deck = Deck(song_folder)  
+    deck.shuffle() 
+
+    print([card.song.name for card in deck.cards])
 
     ## Initialize pygame stuff
     pygame.init()

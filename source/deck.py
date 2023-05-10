@@ -17,10 +17,10 @@ song_names = [f'{i}.mp3' for i in range(NUMBER_OF_SONGS)] * 2
 
 class Deck:
 
-    def __init__(self, song_folder):
-        
+    def __init__(self, song_folder):                
         song_names = list(filter(lambda x: x.endswith('.mp3'), os.listdir(song_folder)))
-        song_names = song_names[:NUMBER_OF_SONGS]
+        if len(song_names) > NUMBER_OF_SONGS:
+            song_names = random.sample(song_names, k=NUMBER_OF_SONGS)        
 
         self.r = 100
         self.songs = [Song(song_name, song_folder) for song_name in song_names] * 2
@@ -39,12 +39,16 @@ class Deck:
         self.cards = [Card(pos, self.r, 'red', song) for pos, song in zip(positions, self.songs)]
         self.clicked_cards = []
 
+
     def draw(self, screen):
         for card in self.cards:
             card.draw(screen)
 
-    def shuffle(self):
-        random.shuffle(self.cards)
+    def shuffle(self):      
+        positions = [card.position for card in self.cards] 
+        random.shuffle(positions)
+        for new_pos, card in zip(positions, self.cards):   
+            card.position = new_pos
 
     def check_match(self):        
         card1, card2 = self.clicked_cards
